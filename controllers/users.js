@@ -14,7 +14,7 @@ const getUsers = (req, res) => {
       console.error(err);
       return res
         .status(INTERNAL_SERVER_ERROR_STATUS_CODE)
-        .send({ message: err.message });
+        .send({ message: "An error occured on the server" });
     });
   console.log("IN CONTROLLER");
 };
@@ -29,9 +29,11 @@ const createUser = (req, res) => {
       if (err.name === "ValidationError") {
         return res
           .status(BAD_REQUEST_STATUS_CODE)
-          .send({ message: err.message });
+          .send({ message: "An error occured on the server" });
       }
-      return res.status(500).send({ message: err.message });
+      return res
+        .status(500)
+        .send({ message: "An error occured on the server" });
     });
 };
 
@@ -43,15 +45,17 @@ const getUser = (req, res) => {
     .catch((err) => {
       console.log(err);
       if (err.name === "DocumentNotFoundError") {
-        return res.status(NOT_FOUND_STATUS_CODE).send({ message: err.message });
+        return res
+          .status(NOT_FOUND_STATUS_CODE)
+          .send({ message: "An error occured on the server" });
       } else if (err.name === "CastError") {
         return res
           .status(BAD_REQUEST_STATUS_CODE)
-          .send({ message: err.message });
+          .send({ message: "An error occured on the server" });
       } else {
         return res
           .status(INTERNAL_SERVER_ERROR_STATUS_CODE)
-          .send({ message: err.message });
+          .send({ message: "An error occured on the server" });
       }
     });
 };
