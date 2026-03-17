@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 const validator = require("validator");
 const clothingItem = new mongoose.Schema({
   name: {
+    minlength: 2,
+    maxlength: 30,
     type: String,
     required: true,
   },
@@ -9,7 +11,7 @@ const clothingItem = new mongoose.Schema({
     type: String,
     required: true,
   },
-  imageURL: {
+  imageUrl: {
     type: String,
     required: true,
     validate: {

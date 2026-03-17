@@ -32,7 +32,7 @@ const createUser = (req, res) => {
           .send({ message: "An error occured on the server" });
       }
       return res
-        .status(500)
+        .status(INTERNAL_SERVER_ERROR_STATUS_CODE)
         .send({ message: "An error occured on the server" });
     });
 };

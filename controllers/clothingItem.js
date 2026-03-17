@@ -1,10 +1,8 @@
 const clothingItem = require("../models/clothingItem");
 const {
-  OK,
-  CREATED,
-  BAD_REQUEST,
-  NOT_FOUND,
-  INTERNAL_SERVER_ERROR,
+  BAD_REQUEST_STATUS_CODE,
+  NOT_FOUND_STATUS_CODE,
+  INTERNAL_SERVER_ERROR_STATUS_CODE,
 } = require("../utils/errors");
 
 // GET clothing items
@@ -12,7 +10,7 @@ const getItems = (req, res) => {
   clothingItem
     .find({})
     .then((items) => {
-      res.status(OK).send({ data: items });
+      res.send({ data: items });
     })
     .catch((err) => {
       console.error(err);
@@ -30,7 +28,7 @@ const createItem = (req, res) => {
   clothingItem
     .create({ name, weather, imageUrl, owner })
     .then((item) => {
-      res.status(CREATED).send({ data: item });
+      res.status(201).send({ data: item });
     })
     .catch((err) => {
       console.error(err);
@@ -54,7 +52,7 @@ const likeItem = (req, res) => {
       { new: true }
     )
     .orFail()
-    .then((item) => res.status(OK).send({ data: item }))
+    .then((item) => res.send({ data: item }))
     .catch((err) => {
       console.error(err);
       if (err.name === "DocumentNotFoundError") {
@@ -80,7 +78,7 @@ const dislikeItem = (req, res) => {
       { new: true }
     )
     .orFail()
-    .then((item) => res.status(OK).send(item))
+    .then((item) => res.send(item))
     .catch((err) => {
       console.error(err);
       if (err.name === "DocumentNotFoundError") {
@@ -103,7 +101,7 @@ const deleteItem = (req, res) => {
     .findByIdAndDelete(itemId)
     .orFail()
     .then((item) => {
-      res.status(OK).send({ data: item });
+      res.send({ data: item });
     })
     .catch((err) => {
       console.error(err);
