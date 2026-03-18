@@ -48,15 +48,15 @@ const getUser = (req, res) => {
         return res
           .status(NOT_FOUND_STATUS_CODE)
           .send({ message: "An error occured on the server" });
-      } else if (err.name === "CastError") {
+      }
+      if (err.name === "CastError") {
         return res
           .status(BAD_REQUEST_STATUS_CODE)
           .send({ message: "An error occured on the server" });
-      } else {
-        return res
-          .status(INTERNAL_SERVER_ERROR_STATUS_CODE)
-          .send({ message: "An error occured on the server" });
       }
+      return res
+        .status(INTERNAL_SERVER_ERROR_STATUS_CODE)
+        .send({ message: "An error occured on the server" });
     });
 };
 module.exports = { getUsers, createUser, getUser };

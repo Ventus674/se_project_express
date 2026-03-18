@@ -15,7 +15,7 @@ const getItems = (req, res) => {
     .catch((err) => {
       console.error(err);
       res
-        .status(INTERNAL_SERVER_ERROR)
+        .status(INTERNAL_SERVER_ERROR_STATUS_CODE)
         .send({ message: "An error occurred on the server" });
     });
 };
@@ -33,10 +33,12 @@ const createItem = (req, res) => {
     .catch((err) => {
       console.error(err);
       if (err.name === "ValidationError") {
-        return res.status(BAD_REQUEST).send({ message: "Invalid item data" });
+        return res
+          .status(BAD_REQUEST_STATUS_CODE)
+          .send({ message: "Invalid item data" });
       }
       return res
-        .status(INTERNAL_SERVER_ERROR)
+        .status(INTERNAL_SERVER_ERROR_STATUS_CODE)
         .send({ message: "An error occurred on the server" });
     });
 };
@@ -56,13 +58,17 @@ const likeItem = (req, res) => {
     .catch((err) => {
       console.error(err);
       if (err.name === "DocumentNotFoundError") {
-        return res.status(NOT_FOUND).send({ message: "Item not found" });
+        return res
+          .status(NOT_FOUND_STATUS_CODE)
+          .send({ message: "Item not found" });
       }
       if (err.name === "CastError") {
-        return res.status(BAD_REQUEST).send({ message: "Invalid item ID" });
+        return res
+          .status(BAD_REQUEST_STATUS_CODE)
+          .send({ message: "Invalid item ID" });
       }
       return res
-        .status(INTERNAL_SERVER_ERROR)
+        .status(INTERNAL_SERVER_ERROR_STATUS_CODE)
         .send({ message: "An error occurred on the server" });
     });
 };
@@ -82,13 +88,17 @@ const dislikeItem = (req, res) => {
     .catch((err) => {
       console.error(err);
       if (err.name === "DocumentNotFoundError") {
-        return res.status(NOT_FOUND).send({ message: "Item not found" });
+        return res
+          .status(NOT_FOUND_STATUS_CODE)
+          .send({ message: "Item not found" });
       }
       if (err.name === "CastError") {
-        return res.status(BAD_REQUEST).send({ message: "Invalid item ID" });
+        return res
+          .status(BAD_REQUEST_STATUS_CODE)
+          .send({ message: "Invalid item ID" });
       }
       return res
-        .status(INTERNAL_SERVER_ERROR)
+        .status(INTERNAL_SERVER_ERROR_STATUS_CODE)
         .send({ message: "An error occurred on the server" });
     });
 };
@@ -107,13 +117,17 @@ const deleteItem = (req, res) => {
       console.error(err);
       console.log("Error name:", err.name);
       if (err.name === "DocumentNotFoundError") {
-        return res.status(NOT_FOUND).send({ message: "Item not found" });
+        return res
+          .status(NOT_FOUND_STATUS_CODE)
+          .send({ message: "Item not found" });
       }
       if (err.name === "CastError") {
-        return res.status(BAD_REQUEST).send({ message: "Invalid item ID" });
+        return res
+          .status(BAD_REQUEST_STATUS_CODE)
+          .send({ message: "Invalid item ID" });
       }
       return res
-        .status(INTERNAL_SERVER_ERROR)
+        .status(INTERNAL_SERVER_ERROR_STATUS_CODE)
         .send({ message: "An error occurred on the server" });
     });
 };
