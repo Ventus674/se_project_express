@@ -51,7 +51,9 @@ const createUser = (req, res) => {
       if (err.name === "ValidationError") {
         return res.status(BAD_REQUEST).json({ message: err.message });
       }
-
+      if (err.code === 11000) {
+        return res.status(CONFLICT).send({ message: "Email already exists" });
+      }
       return res
         .status(INTERNAL_SERVER_ERROR)
         .json({ message: "An error occurred on the server" });
