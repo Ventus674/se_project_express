@@ -49,7 +49,7 @@ const createUser = (req, res) => {
       console.error(err);
 
       if (err.name === "ValidationError") {
-        return res.status(BAD_REQUEST).json({ message: err.message });
+        return res.status(BAD_REQUEST).json({ message: "Invalid data" });
       }
       if (err.code === 11000) {
         return res.status(CONFLICT).send({ message: "Email already exists" });
@@ -126,7 +126,7 @@ const updateCurrentUser = (req, res) => {
         return res.status(NOT_FOUND).send({ message: "User Not found" });
       }
       if (err.name === "ValidationError") {
-        return res.status(BAD_REQUEST).send({ message: err.message });
+        return res.status(BAD_REQUEST).send({ message: "Invalid data" });
       }
       if (err.name === "CastError") {
         return res.status(BAD_REQUEST).send({ message: "Invalid User ID" });
