@@ -11,3 +11,7 @@ I built this on VS code using purely Javascript. Other programs to check my work
 `npm run start` — to launch the server
 
 `npm run dev` — to launch the server with the hot reload feature
+
+## Video description
+
+https://drive.google.com/file/d/1FAdvkKipp64g50lyeuPMwqIeCpPQ-LIO/view?usp=sharing
