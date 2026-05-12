@@ -5,7 +5,7 @@ const { JWT_SECRET } = require("../utils/config");
 const User = require("../models/user");
 const { CREATED, OK } = require("../utils/errors");
 const BadRequestError = require("../utils/badrequesterror");
-const ConflictError = require("../utils/confilcterror");
+const ConflictError = require("../utils/conflicterror");
 const NotFoundError = require("../utils/notfounderror");
 const UnauthorizedError = require("../utils/unauthorizederror");
 
@@ -91,7 +91,7 @@ const updateCurrentUser = (req, res, next) => {
   const { name, avatar } = req.body;
 
   return User.findByIdAndUpdate(
-    req.user._Id,
+    req.user._id,
     { name, avatar },
     { new: true, runValidators: true }
   )
