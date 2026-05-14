@@ -18,8 +18,12 @@ The backend runs on Node.js with Express and MongoDB and is managed by PM2 for s
 
 ## Video description
 
-https://drive.google.com/file/d/1FAdvkKipp64g50lyeuPMwqIeCpPQ-LIO/view?usp=sharing
+https://drive.google.com/file/d/131JgxCJYLQmxwKIr52NE4ilqSydcDF9P/view?usp=drive_link
 
 # Link to my front-end of this project
 
 https://github.com/Ventus674/se_project_react
+
+# Deployed server URL:
+
+http://localhost:3000
