@@ -26,4 +26,4 @@ https://github.com/Ventus674/se_project_react
 
 # Deployed server URL:
 
-http://localhost:3000
+www.wtwr.fivepals.com
