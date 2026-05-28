@@ -45,7 +45,9 @@ const createUser = (req, res, next) => {
         return next(new BadRequestError(err.message));
       }
       if (err.code === 11000) {
-        return res.status(CONFLICT).send({ message: "Email already exists" });
+        return res
+          .status(ConflictError)
+          .send({ message: "Email already exists" });
       }
       return next(err);
     });

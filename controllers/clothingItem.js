@@ -49,7 +49,7 @@ const likeItem = (req, res, next) => {
 const dislikeItem = (req, res, next) => {
   const { itemId } = req.params;
 
-  clothingItem;
+  clothingItem();
   return clothingItem
     .findByIdAndUpdate(
       itemId,
@@ -70,7 +70,7 @@ const deleteItem = (req, res, next) => {
   const { itemId } = req.params;
   const userId = req.user._id;
 
-  clothingItem;
+  clothingItem();
   return clothingItem
     .findById(itemId)
     .then((item) => {
